@@ -1,8 +1,13 @@
 package ca.usherbrooke.gegi.server.business;
 import ca.usherbrooke.gegi.server.Database.DataBase;
+import ca.usherbrooke.gegi.server.Mapper.ClasseMapper;
 import ca.usherbrooke.gegi.server.Mapper.EtudiantMapper;
+import ca.usherbrooke.gegi.server.Mapper.NoteMapper;
+import ca.usherbrooke.gegi.server.Note.Classe;
 
 import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
 
 public class Etudiant {
     private Integer etudiant_app_id;
@@ -126,19 +131,16 @@ public class Etudiant {
 
     @Override
     public String toString() {
-        return "Etudiant{" +
-                "etudiant_app_id=" + etudiant_app_id +
-                ", cip='" + cip + '\'' +
-                ", courriel='" + courriel + '\'' +
-                ", programme='" + programme + '\'' +
-                ", programme_nom='" + programme_nom + '\'' +
-                ", app='" + app + '\'' +
-                ", app_titre='" + app_titre + '\'' +
-                ", ap='" + ap + '\'' +
-                ", departemen='" + departemen + '\'' +
-                ", faculte='" + faculte + '\'' +
-                ", universite='" + universite + '\'' +
-                '}';
+        return  cip + '\'' +
+                courriel + '\'' +
+                programme + '\'' +
+                 programme_nom + '\'' +
+                app + '\'' +
+                app_titre + '\'' +
+                ap + '\'' +
+                departemen + '\'' +
+                faculte + '\'' +
+                universite;
     }
     public boolean ajouterEtudiantToDB(DataBase db){
 
@@ -148,6 +150,15 @@ public class Etudiant {
     public Etudiant selectEtudiant(DataBase db){
         ResultSet cunt = db.selectStatement("SELECT * FROM app.etudiant_app WHERE app.etudiant_app.cip LIKE '"+getCip()+"' ");
         Etudiant e = new EtudiantMapper().mapData(cunt).get(0);
+        return e;
+    }
+    public ArrayList<Classe> selectClasseEtudiant(DataBase db){
+        ResultSet cunt = db.selectStatement("SELECT * FROM app.classe;");
+        ArrayList<Classe> e = new ArrayList<Classe>();
+        e.addAll(new ClasseMapper().mapData(cunt));
+        for (int i = 0;i<e.size();i++){
+            e.get(i).selectNotes(db,getCip());
+        }
         return e;
     }
 }

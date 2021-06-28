@@ -1,10 +1,13 @@
 package ca.usherbrooke.gegi.server.presentation;
 
 import ca.usherbrooke.gegi.server.Database.DataBase;
+import ca.usherbrooke.gegi.server.Note.Classe;
 import ca.usherbrooke.gegi.server.business.Trimestre;
 import ca.usherbrooke.gegi.server.persistence.EtudiantMapper;
 import ca.usherbrooke.gegi.server.business.Etudiant;
 import org.jasig.cas.client.authentication.AttributePrincipalImpl;
+import ca.usherbrooke.gegi.server.Note.Note;
+import ca.usherbrooke.gegi.server.Mapper.NoteMapper;
 
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
@@ -19,8 +22,11 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import java.lang.reflect.MalformedParameterizedTypeException;
 import java.security.Principal;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+
+import static java.util.Collections.addAll;
 
 @Path("")
 public class EtudiantService {
@@ -52,6 +58,19 @@ public class EtudiantService {
     }
 
     @GET
+    @Path("note")
+    @Produces("text/plain")
+    public List<Classe> getNote(@QueryParam("id") Integer id) {
+       Note notes = new Note();
+
+        ArrayList<Classe> classes = new ArrayList<Classe>();
+        classes.addAll(getUser(id).selectClasseEtudiant(db));
+       // System.out.println(classes);
+        return classes;
+    }
+
+
+    @GET
     @Path("user")
     @Produces("text/plain")
       public Etudiant getUser(@QueryParam("id") Integer id) {
@@ -60,7 +79,7 @@ public class EtudiantService {
         Etudiant etudiant = new Etudiant();
         etudiant.setCip(principal.getName());
         etudiant =  etudiant.selectEtudiant(db);
-        System.out.println(etudiant);
+       // System.out.println(etudiant);
         return etudiant;
     }
 

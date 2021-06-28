@@ -1,0 +1,70 @@
+create table classe(
+nom varchar(100),
+titre varchar(100),
+
+);
+
+
+create table notesEtudiant(
+cip varchar(8),
+nom varchar(100),
+titre varchar(100),
+note1 integer,
+note2 integer,
+note3 integer,
+denum1 integer,
+denum2 integer,
+denum3 integer,
+moyenne integer
+);
+
+insert into classe values ('math','math102');
+
+insert into classe values ('math','math103');
+
+insert into classe values ('math','math104');
+
+insert into classe values ('math','math105');
+
+insert into classe values ('math','math106');
+
+insert into classe values ('math','math107');
+
+insert into classe values ('math','math108');
+
+insert into classe values ('math','math109');
+
+insert into classe values ('math','math110');
+
+insert into classe values ('math','math111');
+
+insert into classe values ('math','math112');
+
+insert into classe values ('math','math113');
+
+insert into classe values ('math','math114');
+
+insert into classe values ('math','math115');
+
+insert into classe values ('math','math116');
+
+insert into classe values ('math','math117');
+
+insert into notesEtudiant values ('debp1101','math','Exam',100,140,60,100,200,100,123);
+
+insert into notesEtudiant values ('debp1101','math','Exam23434',100,140,60,100,200,100,123);
+
+insert into notesEtudiant values ('debp1101','math','Exa',100,140,60,100,200,100,123);
+
+insert into notesEtudiant values ('debp1101','math','Exam234',100,140,60,100,200,100,123);
+
+insert into notesEtudiant values ('debp1101','math','Exam23',100,140,60,100,200,100,123);
+
+insert into notesEtudiant values ('debp1101','math','Exam6',100,140,60,100,200,100,123);
+
+insert into notesEtudiant values ('debp1101','math','Exam5',100,140,60,100,200,100,123);
+
+insert into notesEtudiant values ('debp1101','math','Exam4',100,140,60,100,200,100,123);
+
+insert into notesEtudiant values ('debp1101','math','Exam3',100,140,60,100,200,100,123);
+
