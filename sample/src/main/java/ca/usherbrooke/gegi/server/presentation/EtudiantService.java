@@ -59,10 +59,9 @@ public class EtudiantService {
 
     @GET
     @Path("note")
-    @Produces("text/plain")
+    @Produces("application/json")
     public List<Classe> getNote(@QueryParam("id") Integer id) {
        Note notes = new Note();
-
         ArrayList<Classe> classes = new ArrayList<Classe>();
         classes.addAll(getUser(id).selectClasseEtudiant(db));
        // System.out.println(classes);

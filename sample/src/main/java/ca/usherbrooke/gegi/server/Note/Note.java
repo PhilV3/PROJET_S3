@@ -34,6 +34,6 @@ public Note(String cip,String nom, String titre, int notes, int maxEval, int moy
 
     @Override
     public String toString() {
-        return nom+"'"+ titre +"'"+ notes +"'"+ maxEval +"'"+ moyenne;
+        return nom+"'"+ titre +"'"+ notes +"'"+ maxEval +"'"+ moyenne + "/";
     }
 }
