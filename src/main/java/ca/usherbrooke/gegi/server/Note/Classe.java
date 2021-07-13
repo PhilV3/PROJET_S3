@@ -20,10 +20,12 @@ public class Classe {
         this.libelle = titre;
         this.listNote = listNote;
     }
+    public String getNom(){return nom;}
 
-    public String getLibelle() {
-        return libelle;
+    public ArrayList<Note> getListNote() {
+        return listNote;
     }
+
 
     public void setLibelle(String libelle) {
         this.libelle += libelle;
@@ -36,12 +38,12 @@ public class Classe {
 
     @Override
     public String toString() {
-        return nom+" " +libelle+" " + listNote.toString()+"\n";
+        return nom +" "+ listNote.toString()+"\n";
     }
 
     public void selectNotes(DataBase db,String cip){
-        ResultSet cunt = db.selectStatement("select app.classe.libelle,classe.ap_id, commentaire,classe.competence_id,control_notes.controle_id,control_notes.note,control_notes.ponderation from app.classe,app.control_notes where classe.competence_id = control_notes.competence_id and control_notes.cip_etudiant = 'debp1101' and classe.trimestre_id = 'H21' and classe.controle_id = control_notes.controle_id order by ap_id, libelle\n");
-        //System.out.println("ASPNIPAOFPOEFPOAEFPOEFPOPOEFEWFOPKPWEFOKPOKFWEEWFPOKFE\n\n\n\n\n\n\n\n\n\n\n");
+        ResultSet cunt = db.selectStatement("select app.classe.libelle, app.control_notes.cip_etudiant ,app.classe.ap_id,app.control_notes.commentaire,app.classe.competence_id,app.control_notes.controle_id,app.control_notes.note,app.control_notes.ponderation from app.classe,app.control_notes where classe.competence_id = control_notes.competence_id and control_notes.cip_etudiant = 'debp1101' and classe.trimestre_id = 'H21' and classe.controle_id = control_notes.controle_id order by ap_id, libelle;");
+        //System.out.println("ASPNIPAOFPOEFPOAEFPOEFPOPOEFEWFOPKPWEFOKPOKFWEEWFPOKFE\n\n\n\n\n\n\n\n\n\n\n");;
         listNote.addAll(new NoteMapper().mapData(cunt));
       //  return cunt;
     }

@@ -19,6 +19,7 @@ public class NoteMapper {
                 i++;
             }
         }catch (SQLException e){
+            System.out.println(e.getMessage());
             return noteMapper;
         }
         return noteMapper;

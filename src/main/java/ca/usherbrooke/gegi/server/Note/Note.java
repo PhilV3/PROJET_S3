@@ -27,8 +27,24 @@ public class Note {
 
     }
 
+    public int getNote() {
+        return note;
+    }
+
+    public int getCompetence() {
+        return competence;
+    }
+
+    public int getPonderation() {
+        return ponderation;
+    }
+
+    public String getLibelle() {
+        return libelle;
+    }
+
     @Override
     public String toString() {
-        return "\t"+ note+" " + ponderation+" " + competence+"\n";
+        return "\t"+libelle +" "+ note+" " + ponderation+" " + competence+"\n";
     }
 }

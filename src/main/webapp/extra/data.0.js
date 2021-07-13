@@ -38,30 +38,30 @@ function loadAPINote() {
 }
 //pas encore implémenté
 class Note{
-    constructor(note,denum, session) {
-        this.note1 = note.substr(1,3)+"/"+denum.substr(1,3);
-        this.note2 = note.substr(5,7)+"/"+denum.substr(5,7);
-        this.note3 = note.substr(10)+"/"+denum.substr(10);
+    constructor(ap_id,note,ponde, libelle,competence) {
+        this.libelle = libelle;
+        this.note = note;
+        this.ponde = ponde;
+        this.ap_id = ap_id;
+        this.competence = competence
     }
-    get note1(){
-        return this.note1;
+
+    get libelle(){
+        return this.libelle;
     }
-    get note2(){
-        return this.note2;
+    get note(){
+        return this.note;
     }
-    get note3(){
-        return this.note3;
+    get ponde(){
+        return this.ponde;
     }
-    somme(){
-        var a = 0,b = 0,c = 0;
-        if (this.note1.split("/")[0] !== "" || this.note1.split("/")[0] !== "-")
-           a = parseInt(this.note1.split("/")[0]);
-        if (this.note2.split("/")[0] !== "" || this.note2.split("/")[0] !== "-")
-           b = parseInt(this.note2.split("/")[0]);
-        if (this.note3.split("/")[0] !== "" || this.note3.split("/")[0] !== "-")
-           c = parseInt(this.note2.split("/")[0]);
-    return (a+b+c);
+    get Competence(){
+        return this.competence;
     }
+    get Ap_id(){
+        return this.ap_id;
+    }
+
     toTable(){
         return "<td>"+this.somme()+"</td><td>"+this.note1()+"</td><td>"+this.note2()+"</td><td>"+this.note3()+"</td>";
     }
@@ -70,7 +70,7 @@ class Note{
 class Cours{
     constructor(nom,titre) {
         this.nom = nom;
-        this.titre = titre;
+        this.libelle = this.libelle;
         this.listeNotes = new List();
     }
     addNote(liste){
@@ -85,9 +85,13 @@ class Cours{
     get nom(){
         return this.nom;
     }
-    get titre(){
-        return this.nom;
+    get Libelle(){
+        return this.libelle;
     }
+    get Listenote(){
+        return this.listeNotes;
+    }
+
     toTable(){
         var str = "<tr><td>"+this.nom()+"</td><td>"+this.titre()+"</td>";
             for (let i = 0; i<this.listeNotes().length;i++){
