@@ -1,5 +1,4 @@
 package ca.usherbrooke.gegi.server.Database;
-
 import java.sql.*;
 
 public class ConnectionDatabase {
@@ -8,16 +7,23 @@ public class ConnectionDatabase {
     private String password = "s3iprojet";
     private String username = "s3iprojet00";
 
+    /**
+     * Set la connection entre la database comme étant bonne, ou quitte le programme
+     */
     public ConnectionDatabase() {
     if (Connection());
-    else {
+        else {
         System.out.println("Connection failed");
         System.exit(1);
+        }
     }
-    }
+
+    /**
+     * Teste la connection entre le système et la database
+     * @return Retourne le succès ou non
+     */
     private boolean Connection(){
         boolean good = false;
-
         if (connection == null){
              try{
                  Class.forName("org.postgresql.Driver");
@@ -36,6 +42,11 @@ public class ConnectionDatabase {
         }
         return good;
     }
+
+    /**
+     * Crée le statement qui sera exécuté dans la database
+     * @return retourne le statement exécutable
+     */
     public Statement createSte(){
         try{
             return connection.createStatement();

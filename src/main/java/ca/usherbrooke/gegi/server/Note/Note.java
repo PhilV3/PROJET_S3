@@ -9,22 +9,21 @@ import java.util.ArrayList;
 public class Note {
     String cip = "";
     String nom = "";
-    int note = 0;
     String libelle = "";
+    int note = 0;
     int ponderation = 0;
     int competence = 0;
 
     public Note(String cip,String nom, String libelle, int notes,int ponderation, int competence) {
         this.cip = cip;
         this.nom = nom;
-        this.note = notes;
         this.libelle = libelle;
+        this.note = notes;
         this.ponderation = ponderation;
         this.competence = competence;
     }
 
     public Note() {
-
     }
 
     public int getNote() {

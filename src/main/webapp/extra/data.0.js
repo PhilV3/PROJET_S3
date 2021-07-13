@@ -20,23 +20,15 @@ function loadAPINote() {
     var xhr = new XMLHttpRequest();
 
     xhr.open("GET","api/note", true);
-
     xhr.onload = function () {
         if (this.status == 200){
-          //  var eleve = new Eleve(this.responseText.toString());
-        //    var res = eleve.toTable();
-            console.log(this.responseText);
             let res = this.responseText;
-
             document.getElementById("note").innerHTML = res;
             }
-
-
          }
-
     xhr.send();
 }
-//pas encore implémenté
+
 class Note{
     constructor(ap_id,note,ponde, libelle,competence) {
         this.libelle = libelle;
@@ -45,7 +37,6 @@ class Note{
         this.ap_id = ap_id;
         this.competence = competence
     }
-
     get libelle(){
         return this.libelle;
     }

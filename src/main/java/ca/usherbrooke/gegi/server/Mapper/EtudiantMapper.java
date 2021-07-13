@@ -1,5 +1,4 @@
 package ca.usherbrooke.gegi.server.Mapper;
-
 import ca.usherbrooke.gegi.server.business.Etudiant;
 
 import java.sql.ResultSet;
@@ -7,6 +6,11 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class EtudiantMapper {
+    /**
+     * Mappe les étudiant et les mets dans une liste
+     * @param rs Le résult set venant de la DB
+     * @return Le set d'étudiants mappés
+     */
     public ArrayList<Etudiant> mapData(ResultSet rs){
         ArrayList<Etudiant> etdiantMapper = new ArrayList<Etudiant>();
         try {

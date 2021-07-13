@@ -8,6 +8,11 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class ClasseMapper {
+    /**
+     * Map les classes et crée les mets dans une liste
+     * @param rs Le result set contement les classes
+     * @return L'array contenant les classes
+     */
     public ArrayList<Classe> mapData(ResultSet rs){
         ArrayList<Classe> classeMapper = new ArrayList<Classe>();
         ArrayList<String> hashmap = new ArrayList<String>();
@@ -30,7 +35,6 @@ public class ClasseMapper {
         }catch (SQLException e){
             System.out.println(e.getMessage());
         }
-        System.out.println(hashmap);
         return classeMapper;
     }
 }
