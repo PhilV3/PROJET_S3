@@ -154,7 +154,7 @@ public class Etudiant {
     }
     public ArrayList<Classe> selectClasseEtudiant(DataBase db){
        // ResultSet cunt = db.selectStatement("SELECT * FROM app.classe,app.control_notes where app.control_notes.cip_etudiant like '"+getCip()+"' and app.control_notes.ap_id like 'app.class.ap_id';");
-        ResultSet cunt = db.selectStatement("select classe.ap_id,libelle from app.classe inner join app.control_notes on app.classe.ap_id like app.control_notes.ap_id and app.control_notes.cip_etudiant like '"+getCip()+"' and app.classe.trimestre_id like 'H21' order by app.classe.ap_id;");
+        ResultSet cunt = db.selectStatement("select app.classe.ap_id, app.classe.libelle from app.classe,app.control_notes where app.classe.ap_id = app.control_notes.ap_id and app.control_notes.cip_etudiant = '"+getCip()+"' and app.classe.trimestre_id like 'H21' and classe.controle_id = control_notes.controle_id order by app.classe.ap_id ;");
         ArrayList<Classe> e = new ArrayList<Classe>();
         e.addAll(new ClasseMapper().mapData(cunt));
         for (int i = 0;i<e.size();i++){

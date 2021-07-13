@@ -29,9 +29,9 @@ public class Classe {
         this.libelle += libelle;
     }
 
-    public Classe(String nom, String titre) {
+    public Classe(String nom, String libelle) {
         this.nom = nom;
-        this.libelle = titre;
+        this.libelle = libelle;
     }
 
     @Override
@@ -40,7 +40,7 @@ public class Classe {
     }
 
     public void selectNotes(DataBase db,String cip){
-        ResultSet cunt = db.selectStatement("SELECT libelle,control_id.ap_id,control_notes.cip_etudiant,control_notes.competence_id,control_notes.note,control_notes.ponderation FROM app.control_notes join app.classe on control_notes.cip_etudiant LIKE '"+cip+"' and classe.ap_id like '"+this.nom+"' and trimestre_id like 'H21'");
+        ResultSet cunt = db.selectStatement("select app.classe.libelle,classe.ap_id, commentaire,classe.competence_id,control_notes.controle_id,control_notes.note,control_notes.ponderation from app.classe,app.control_notes where classe.competence_id = control_notes.competence_id and control_notes.cip_etudiant = 'debp1101' and classe.trimestre_id = 'H21' and classe.controle_id = control_notes.controle_id order by ap_id, libelle\n");
         //System.out.println("ASPNIPAOFPOEFPOAEFPOEFPOPOEFEWFOPKPWEFOKPOKFWEEWFPOKFE\n\n\n\n\n\n\n\n\n\n\n");
         listNote.addAll(new NoteMapper().mapData(cunt));
       //  return cunt;

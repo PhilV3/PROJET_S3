@@ -9,16 +9,16 @@ import java.util.ArrayList;
 public class Note {
     String cip = "";
     String nom = "";
-    String titre = "";
     int note = 0;
+    String libelle = "";
     int ponderation = 0;
     int competence = 0;
 
-    public Note(String cip,String nom, String titre, int notes,int ponderation, int competence) {
+    public Note(String cip,String nom, String libelle, int notes,int ponderation, int competence) {
         this.cip = cip;
         this.nom = nom;
-        this.titre = titre;
         this.note = notes;
+        this.libelle = libelle;
         this.ponderation = ponderation;
         this.competence = competence;
     }

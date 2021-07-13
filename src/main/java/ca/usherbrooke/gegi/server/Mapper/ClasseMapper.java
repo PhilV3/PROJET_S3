@@ -17,7 +17,6 @@ public class ClasseMapper {
                 if (!hashmap.contains(rs.getString("ap_id"))) {
                     classeMapper.add(new Classe(rs.getString("ap_id"), rs.getString("libelle")));
                     hashmap.add(rs.getString("ap_id"));
-                    System.out.println(rs.getString("ap_id")+hashmap2);
                     hashmap2.clear();
                     hashmap2.add(rs.getString("libelle"));
 
@@ -25,8 +24,6 @@ public class ClasseMapper {
                     if (!hashmap2.contains(rs.getString("libelle"))) {
                         classeMapper.get(classeMapper.size() - 1).setLibelle(" " + rs.getString("libelle"));
                         hashmap2.add(rs.getString("libelle"));
-                        System.out.println(rs.getString("libelle"));
-                        System.out.println(rs.getString("libelle"));
                     }
                 }
             }
