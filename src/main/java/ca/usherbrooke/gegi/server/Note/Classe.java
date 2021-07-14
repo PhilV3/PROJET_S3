@@ -49,6 +49,6 @@ public class Classe {
      */
     public void selectNotes(DataBase db,String cip,String trimestre){
         ResultSet cunt = db.selectStatement("select app.classe.libelle, app.control_notes.cip_etudiant ,app.classe.ap_id,app.control_notes.commentaire,app.classe.competence_id,app.control_notes.controle_id,app.control_notes.note,app.control_notes.ponderation from app.classe,app.control_notes where classe.competence_id = control_notes.competence_id and control_notes.cip_etudiant = '"+cip+"' and classe.trimestre_id = '"+trimestre+"' and classe.controle_id = control_notes.controle_id order by ap_id, libelle;");
-        listNote.addAll(new NoteMapper().mapData(cunt));
+        listNote.addAll(new NoteMapper().mapData(cunt,getNom()));
     }
 }

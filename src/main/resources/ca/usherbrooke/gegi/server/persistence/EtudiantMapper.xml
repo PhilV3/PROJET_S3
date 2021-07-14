@@ -20,7 +20,7 @@
         universite
       FROM
         app.v_etudiant_app
-      where
+      wheren
         etudiant_app_id = #{id};
 
     </select>

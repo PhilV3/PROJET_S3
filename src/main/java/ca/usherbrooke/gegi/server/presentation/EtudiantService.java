@@ -77,6 +77,7 @@ public class EtudiantService {
         Etudiant etudiant = new Etudiant();
         etudiant.setCip(principal.getName());
         etudiant =  etudiant.selectEtudiant(db);
+
        // System.out.println(etudiant);
         return etudiant;
     }

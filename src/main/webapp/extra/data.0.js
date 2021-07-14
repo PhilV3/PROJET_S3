@@ -23,10 +23,37 @@ function loadAPINote() {
     xhr.onload = function () {
         if (this.status == 200){
             let res = this.responseText;
+            let obj = JSON.parse(res);
+            console.log(obj[0]);
+            let a = obj[0];
+            console.log(noteCours(a));
+            console.log(noteCompetence(a,2));
             document.getElementById("note").innerHTML = res;
             }
          }
     xhr.send();
+}
+function noteCours(cours){
+    let totNote =  0;
+    let totPonderation = 0;
+    for(var i = 0; i < cours.listNote.length; i++){
+        totNote += cours.listNote[i].note;
+        totPonderation += cours.listNote[i].ponderation;
+    }
+    let s =totNote+"/"+totPonderation;
+    return s;
+}
+function noteCompetence(cours,competence){
+    let totNote =  0;
+    let totPonderation = 0;
+    for(var i = 0; i < cours.listNote.length; i++){
+        if (cours.listNote[i].competence == competence) {
+            totNote += cours.listNote[i].note;
+            totPonderation += cours.listNote[i].ponderation;
+        }
+    }
+    let s =totNote+"/"+totPonderation;
+    return s;
 }
 
 class Note{
@@ -37,10 +64,10 @@ class Note{
         this.ap_id = ap_id;
         this.competence = competence
     }
-    get libelle(){
+    libelle(){
         return this.libelle;
     }
-    get note(){
+    note(){
         return this.note;
     }
     get ponde(){
@@ -62,7 +89,7 @@ class Cours{
     constructor(nom,titre) {
         this.nom = nom;
         this.libelle = this.libelle;
-        this.listeNotes = new List();
+        this.listeNotes = [Note];
     }
     addNote(liste){
         this.listeNotes.addAll(liste);
@@ -70,17 +97,15 @@ class Cours{
     addNote(note){
         this.listeNotes.add(note);
     }
-    get listeNotes(){
+    listeNotes(){
         return this.listeNotes;
     }
-    get nom(){
+
+    nom(){
         return this.nom;
     }
-    get Libelle(){
+    Libelle(){
         return this.libelle;
-    }
-    get Listenote(){
-        return this.listeNotes;
     }
 
     toTable(){
